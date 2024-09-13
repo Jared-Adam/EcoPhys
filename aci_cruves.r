@@ -4,32 +4,38 @@
 library(tidyverse)
 library(plantecophys)
 
-
 # data ####
-# brings in a lot of NAs for some reason
+# brings in a lot of NA columns for some reason, so I am selecting the columns I want
 df <- data_for_aci_cruves %>% 
   dplyr::select(plant, a, ci) %>% 
   rename(Photo = a, 
          Ci = ci) %>% 
   mutate(plant = as.factor(plant))
+# fitacis() needs a data frame object
 df <- as.data.frame(df)
 
-# fit some curves
-huh <- manyacidat %>% 
+# test data set ####
+# this df comes with the package
+# I matched my variable names based on what this df had
+manyacidat
+
+test_df <- manyacidat %>% 
   dplyr::select(Curve, Ci, Photo)
-?fitacis
 
-obs <- fitacis(df, 'plant', fitmethod = 'bilinear', id = 'plant')
-coef(obs)
-plot(obs, how = 'oneplot', colour_by_id = TRUE, id_legend = TRUE)
-
-
-test <- fitacis(huh, 'Curve', fitmethod = 'bilinear')
+test <- fitacis(test_df, 'Curve', fitmethod = 'bilinear')
 
 plot(test, how = 'oneplot')
 
+# my data now ####
 
-#####
+obs <- fitacis(df, 'plant', fitmethod = 'bilinear', id = 'plant')
+# coef() will output the values calculated in excel
+coef(obs)
+# plot() the object created above
+plot(obs, how = 'oneplot', colour_by_id = TRUE, id_legend = TRUE)
+
+
+# alterantive ggplot visual option ####
 ggplot(df, aes(x = Ci, y = Photo, color = plant))+
   geom_point()+
   geom_smooth(se = FALSE)+
