@@ -6,6 +6,7 @@ library(plantecophys)
 
 # data ####
 # brings in a lot of NA columns for some reason, so I am selecting the columns I want
+# this df is composed of the plant name, A and ci columns
 df <- data_for_aci_cruves %>% 
   dplyr::select(plant, a, ci) %>% 
   rename(Photo = a, 
