@@ -11,10 +11,14 @@ df <- data_for_aci_cruves %>%
   dplyr::select(plant, a, ci) %>% 
   rename(Photo = a, 
          Ci = ci) %>% 
-  mutate(plant = as.factor(plant))
+  mutate(plant = as.factor(plant)) %>% 
+  mutate(plant = case_when(plant =='lily' ~ 'Lily',
+                           plant == 'hosta' ~ 'Hosta',
+                           .default = as_factor(plant)))
+?case_when
 # fitacis() needs a data frame object
 df <- as.data.frame(df)
-
+?fct_relabel
 # test data set ####
 # this df comes with the package
 # I matched my variable names based on what this df had
@@ -39,14 +43,17 @@ plot(obs, how = 'oneplot', colour_by_id = TRUE, id_legend = TRUE)
 # alterantive ggplot visual option ####
 ggplot(df, aes(x = Ci, y = Photo, color = plant))+
   geom_point()+
-  geom_smooth(se = FALSE)+
+  geom_smooth(se = TRUE)+
   labs(title = 'A-Ci Curves')+
+  xlab(bquote(C[i]~ppm))+
+  ylab(bquote(Photosynthesis~(A)~m^-2~s^-1))+
   scale_color_discrete(name = 'Plant name')+
   theme_bw()+
   theme(
     axis.text = element_text(size = 14),
     axis.title = element_text(size = 22),
-    title = element_text(size = 24)
+    title = element_text(size = 24),
+    legend.text = element_text(size =20)
   )
 
 

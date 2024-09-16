@@ -1,0 +1,31 @@
+lily,var,val, unit
+lily,Vcmax,144.1625501,mmol m-2 s-1
+lily,J,167.4884316,mmol m-2 s-1
+lily,TPU,12.17950298,mmol m-2 s-1
+lily,Rd,4.418255403,mmol m-2 s-1
+lily,Gamma,66.75,na
+lily,Amax,34.65560013,µmol m?² s?¹
+Pilo,Vcmax,72.83935292,mmol m-2 s-1
+Pilo,J,116.8834646,mmol m-2 s-1
+Pilo,TPU,10.28641218,mmol m-2 s-1
+Pilo,Rd,1.826786736,mmol m-2 s-1
+Pilo,Gamma,58.4,na
+Pilo,Amax,31.76855166,µmol m?² s?¹
+Hosta ,Vcmax,62.55322454,mmol m-2 s-1
+Hosta ,J,102.7506502,mmol m-2 s-1
+Hosta ,TPU,8.024560054,mmol m-2 s-1
+Hosta ,Rd,0,mmol m-2 s-1
+Hosta ,Gamma,37.06,na
+Hosta ,Amax,25.1861906,µmol m?² s?¹
+PIAL,Vcmax,65.46283693,mmol m-2 s-1
+PIAL,J,114.7737168,mmol m-2 s-1
+PIAL,TPU,9.858990062,mmol m-2 s-1
+PIAL,Rd,1.446304304,mmol m-2 s-1
+PIAL,Gamma,54.03,na
+PIAL,Amax,34.04497506,µmol m?² s?¹
+PIFL,Vcmax,91.34887087,mmol m-2 s-1
+PIFL,J,130.6002274,mmol m-2 s-1
+PIFL,TPU,9.959598377,mmol m-2 s-1
+PIFL,Rd,3.891741686,mmol m-2 s-1
+PIFL,Gamma,71.74,na
+PIFL,Amax,31.83756482,µmol m?² s?¹
