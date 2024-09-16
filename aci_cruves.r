@@ -46,21 +46,96 @@ ggplot(df, aes(x = Ci, y = Photo, color = plant))+
   geom_smooth(se = TRUE)+
   labs(title = 'A-Ci Curves')+
   xlab(bquote(C[i]~ppm))+
-  ylab(bquote(Photosynthesis~(A)~m^-2~s^-1))+
+  ylab(bquote(A[net]~(Photosynthesis)~mu~mol~m^-2~s^-1))+
   scale_color_discrete(name = 'Plant name')+
   theme_bw()+
   theme(
-    axis.text = element_text(size = 14),
+    axis.text = element_text(size = 18),
     axis.title = element_text(size = 22),
     title = element_text(size = 24),
     legend.text = element_text(size =20)
   )
 
+# part 2 ####
 
+df2 <- data_for_individual_plots %>% 
+  mutate_at(1:2, as_factor) %>% 
+  dplyr::select(-unit) %>% 
+  rename(plant = lily) %>% 
+  mutate(plant = case_when(plant == 'lily' ~ 'Lily',
+                           .default = as_factor(plant)))
 
+unique(df2$var)
 
+ggplot(filter(df2, var == 'Vcmax'), aes(y=val, x = plant, color = plant))+
+    geom_point(size = 10)+
+  labs(title = 'Vcmax ~ Plant (n=5)',
+       x = "Plant")+
+  ylab(bquote(A[net]~(Photosynthesis)~mu~mol~m^-2~s^-1))+
+  scale_color_discrete(name = 'Plant name')+
+  theme_bw()+
+  theme(axis.text = element_text(size = 26),
+        axis.title = element_text(size = 30),
+        title = element_text(size = 30),
+        legend.text = element_text(size = 24))
+       
 
+ggplot(filter(df2, var == 'J'), aes(y=val, x = plant, color = plant))+
+  geom_point(size = 10)+
+  labs(title = 'Jmax ~ Plant (n=5)',
+       x = "Plant")+
+  ylab(bquote(A[net]~(Photosynthesis)~mu~mol~m^-2~s^-1))+
+  scale_color_discrete(name = 'Plant name')+
+  theme_bw()+
+  theme(axis.text = element_text(size = 26),
+        axis.title = element_text(size = 30),
+        title = element_text(size = 30),
+        legend.text = element_text(size = 24))
 
+ggplot(filter(df2, var == 'TPU'), aes(y=val, x = plant, color = plant))+
+  geom_point(size = 10)+
+  labs(title = 'TPU ~ Plant (n=5)',
+       x = "Plant")+
+  ylab(bquote(A[net]~(Photosynthesis)~mu~mol~m^-2~s^-1))+
+  scale_color_discrete(name = 'Plant name')+
+  theme_bw()+
+  theme(axis.text = element_text(size = 26),
+        axis.title = element_text(size = 30),
+        title = element_text(size = 30),
+        legend.text = element_text(size = 24))
 
+ggplot(filter(df2, var == 'Rd'), aes(y=val, x = plant, color = plant))+
+  geom_point(size = 10)+
+  labs(title = 'Rd ~ Plant (n=5)',
+       x = "Plant")+
+  ylab(bquote(A[net]~(Photosynthesis)~mu~mol~m^-2~s^-1))+
+  scale_color_discrete(name = 'Plant name')+
+  theme_bw()+
+  theme(axis.text = element_text(size = 26),
+        axis.title = element_text(size = 30),
+        title = element_text(size = 30),
+        legend.text = element_text(size = 24))
 
+ggplot(filter(df2, var == 'Gamma'), aes(y=val, x = plant, color = plant))+
+  geom_point(size = 10)+
+  labs(title = 'Gamma ~ Plant (n=5)',
+       x = "Plant")+
+  ylab(bquote(A[net]~(Photosynthesis)~mu~mol~m^-2~s^-1))+
+  scale_color_discrete(name = 'Plant name')+
+  theme_bw()+
+  theme(axis.text = element_text(size = 26),
+        axis.title = element_text(size = 30),
+        title = element_text(size = 30),
+        legend.text = element_text(size = 24))
 
+ggplot(filter(df2, var == 'Amax'), aes(y=val, x = plant, color = plant))+
+  geom_point(size = 10)+
+  labs(title = 'Amax ~ Plant',
+       x = "Plant")+
+  ylab(bquote(A[net]~(Photosynthesis)~mu~mol~m^-2~s^-1))+
+  scale_color_discrete(name = 'Plant name')+
+  theme_bw()+
+  theme(axis.text = element_text(size = 26),
+        axis.title = element_text(size = 30),
+        title = element_text(size = 30),
+        legend.text = element_text(size = 24))
