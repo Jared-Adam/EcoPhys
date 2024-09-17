@@ -65,11 +65,11 @@ ggplot(df2, aes(y=theta, x = plant, color = plant))+
         title = element_text(size = 30),
         legend.text = element_text(size = 24))
 
-ggplot(df2, aes(y=Amax, x = plant, color = plant))+
+ggplot(df2, aes(y=asat, x = plant, color = plant))+
   geom_point(size = 10)+
-  labs(title = 'Amax ~ Plant (n=5)',
+  labs(title = 'Asat ~ Plant (n=5)',
        x = "Plant")+
-  ylab(bquote(A[max]~mu~mol~m^-2~s^-1))+
+  ylab(bquote(A[sat]~mu~mol~m^-2~s^-1))+
   scale_color_discrete(name = 'Plant name')+
   theme_bw()+
   theme(axis.text = element_text(size = 26),
